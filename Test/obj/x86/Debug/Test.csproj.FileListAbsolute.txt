@@ -1,0 +1,9 @@
+C:\Users\pjones\documents\visual studio 2010\Projects\PJones.SC.OEmbed\Test\bin\Debug\Test.exe
+C:\Users\pjones\documents\visual studio 2010\Projects\PJones.SC.OEmbed\Test\bin\Debug\Test.pdb
+C:\Users\pjones\documents\visual studio 2010\Projects\PJones.SC.OEmbed\Test\obj\x86\Debug\Test.exe
+C:\Users\pjones\documents\visual studio 2010\Projects\PJones.SC.OEmbed\Test\obj\x86\Debug\Test.pdb
+C:\Users\pjones\documents\visual studio 2010\Projects\PJones.SC.OEmbed\Test\bin\Debug\PJones.SC.OEmbed.dll
+C:\Users\pjones\documents\visual studio 2010\Projects\PJones.SC.OEmbed\Test\bin\Debug\PJones.SC.OEmbed.pdb
+C:\Users\pjones\documents\visual studio 2010\Projects\PJones.SC.OEmbed\Test\obj\x86\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\pjones\documents\visual studio 2010\Projects\PJones.SC.OEmbed\Test\bin\Debug\Test.exe.config
+C:\Users\pjones\documents\visual studio 2010\Projects\PJones.SC.OEmbed\Test\bin\Debug\Newtonsoft.Json.dll
