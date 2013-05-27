@@ -9,6 +9,7 @@ namespace PJones.OEmbed
 {
     public enum ProviderType
     {
+        Funnyordie,
         Hulu,
         Instagram,
         Polleverywhere,
@@ -17,6 +18,7 @@ namespace PJones.OEmbed
         Slideshare,
         Smugmug,
         Soundcloud,
+        Speakerdeck,
         Spotify,
         Youtube,
         Vimeo

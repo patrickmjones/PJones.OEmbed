@@ -3,6 +3,8 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using System.Collections.Specialized;
+using System;
 
 namespace PJones.OEmbed.Providers
 {
@@ -12,6 +14,9 @@ namespace PJones.OEmbed.Providers
         /// Normally true, but if your Provider needs to be disabled, do it here
         /// </summary>
         public bool Supported { get; set; }
+
+        public int MaxWidth { get; set; }
+        public int MaxHeight { get; set; }
 
         /// <summary>
         /// Regex to identify URLs as processable by this Provider
@@ -77,7 +82,19 @@ namespace PJones.OEmbed.Providers
         public string GetEmbedResponse(string url)
         {
             StringBuilder output = new StringBuilder();
-            string fullURL = EndpointURL + "?url=" + url;
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["url"] = url;
+            queryString["format"] = "json";
+            if (MaxHeight > 0)
+            {
+                queryString["maxheight"] = MaxHeight.ToString();
+            }
+            if (MaxWidth > 0)
+            {
+                queryString["maxwidth"] = MaxWidth.ToString();
+            }
+            
+            string fullURL = String.Format("{0}?{1}", EndpointURL, queryString.ToString());
 
             WebRequest embedReq;
             embedReq = WebRequest.Create(fullURL);

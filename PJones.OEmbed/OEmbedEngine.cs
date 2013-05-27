@@ -17,13 +17,27 @@ namespace PJones.OEmbed
         /// <returns></returns>
         public string Parse(string input)
         {
+            return Parse(input, 0, 0);
+        }
+
+        /// <summary>
+        /// Parses a block of HTML/text using supplied Providers (defaults to all)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="maxwidth"></param>
+        /// <param name="maxheight"></param>
+        /// <returns></returns>
+        public string Parse(string input, int maxwidth, int maxheight)
+        {
             string output = input;
             foreach (Type t in Providers)
             {
-                object provider = Activator.CreateInstance(t);
-                if (((BaseProvider)provider).Supported)
+                BaseProvider provider = ((BaseProvider)Activator.CreateInstance(t));
+                if (provider.Supported)
                 {
-                    output = ((BaseProvider)provider).Process(output);
+                    provider.MaxWidth = maxwidth;
+                    provider.MaxHeight = maxheight;
+                    output = provider.Process(output);
                 }
             }
             return output;
@@ -32,6 +46,7 @@ namespace PJones.OEmbed
         public OEmbedEngine()
         {
             Initialize(new List<Type> {
+                typeof(FunnyordieProvider),
                 typeof(HuluProvider),
                 typeof(InstagramProvider), 
                 typeof(PolleverywhereProvider),
@@ -40,6 +55,7 @@ namespace PJones.OEmbed
                 typeof(SlideshareProvider),
                 typeof(SmugmugProvider),
                 typeof(SoundcloudProvider),
+                typeof(SpeakerdeckProvider),
                 typeof(SpotifyProvider),
                 typeof(YoutubeProvider),
                 typeof(TwitterProvider),
