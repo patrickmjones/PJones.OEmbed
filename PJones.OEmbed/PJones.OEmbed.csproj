@@ -2,21 +2,19 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5F67D7AE-9B69-4939-8545-BC6F9C7B242B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{08761E55-7430-4357-B7EF-DC716C0D0ACF}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test</RootNamespace>
-    <AssemblyName>Test</AssemblyName>
+    <RootNamespace>PJones.OEmbed</RootNamespace>
+    <AssemblyName>PJones.OEmbed</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,8 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,17 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Exceptions\OEmbedException.cs" />
+    <Compile Include="OEmbedEngine.cs" />
+    <Compile Include="OEmbedResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PJones.OEmbed\PJones.OEmbed.csproj">
-      <Project>{08761E55-7430-4357-B7EF-DC716C0D0ACF}</Project>
-      <Name>PJones.OEmbed</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <Compile Include="ProviderFactory.cs" />
+    <Compile Include="Providers\BaseProvider.cs" />
+    <Compile Include="Providers\HuluProvider.cs" />
+    <Compile Include="Providers\InstagramProvider.cs" />
+    <Compile Include="Providers\PolldaddyProvider.cs" />
+    <Compile Include="Providers\PolleverywhereProvider.cs" />
+    <Compile Include="Providers\ScribdProvider.cs" />
+    <Compile Include="Providers\SlideshareProvider.cs" />
+    <Compile Include="Providers\SmugmugProvider.cs" />
+    <Compile Include="Providers\SoundcloudProvider.cs" />
+    <Compile Include="Providers\SpotifyProvider.cs" />
+    <Compile Include="Providers\TwitterProvider.cs" />
+    <Compile Include="Providers\VimeoProvider.cs" />
+    <Compile Include="Providers\YoutubeProvider.cs" />
+    <Compile Include="ProviderTypes.cs" />
+    <Compile Include="Exceptions\UnknownProviderException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
