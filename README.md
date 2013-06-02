@@ -9,3 +9,7 @@ Built-in class library with WebControls for
 * Embed Code
  
 Thumbnails allow setting MaxWidth and MaxHeight for display.
+
+License
+-------
+MIT License - see LICENSE
