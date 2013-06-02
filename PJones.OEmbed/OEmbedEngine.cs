@@ -43,6 +43,28 @@ namespace PJones.OEmbed
             return output;
         }
 
+        /// <summary>
+        /// Gets embed result for a url, null if none
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="maxwidth"></param>
+        /// <param name="maxheight"></param>
+        /// <returns></returns>
+        public OEmbedResult ParseURL(string url, int maxwidth, int maxheight)
+        {
+            foreach (Type t in Providers)
+            {
+                BaseProvider provider = ((BaseProvider)Activator.CreateInstance(t));
+                if (provider.Supported && provider.IsMatch(url))
+                {
+                    provider.MaxWidth = maxwidth;
+                    provider.MaxHeight = maxheight;
+                    return provider.GetEmbedResult(url);
+                }
+            }
+            return null;
+        }
+
         public OEmbedEngine()
         {
             Initialize(new List<Type> {

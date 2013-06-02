@@ -53,6 +53,16 @@ namespace PJones.OEmbed.Providers
         }
 
         /// <summary>
+        /// Determines if url matches this provider
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public bool IsMatch(string url)
+        {
+            return Regex.IsMatch(url, ProviderPattern);
+        }
+
+        /// <summary>
         /// Gets OEmbedResult for a URL
         /// </summary>
         /// <param name="url"></param>
